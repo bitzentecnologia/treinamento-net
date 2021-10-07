@@ -1,0 +1,396 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="TreinamentoNetModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Drivers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Cpf" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="CnhNumber" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="CnhCategoryId" Type="int" Nullable="false" />
+          <Property Name="BirthDate" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FuelTypes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Price" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Manufacturers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Refuels">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VehicleId" Type="int" Nullable="false" />
+          <Property Name="FuelTypeId" Type="int" Nullable="false" />
+          <Property Name="DriverId" Type="int" Nullable="false" />
+          <Property Name="RefuelDate" Type="datetime" Nullable="false" />
+          <Property Name="Qty" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Price" Type="money" Nullable="false" />
+          <Property Name="TotalPrice" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Vehicles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="LicensePlate" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FuelTypesId" Type="int" Nullable="false" />
+          <Property Name="ManufacturersId" Type="int" Nullable="false" />
+          <Property Name="ManufactureYear" Type="int" Nullable="false" />
+          <Property Name="TankCapacity" Type="int" Nullable="false" />
+          <Property Name="Remarks" Type="nvarchar(max)" />
+        </EntityType>
+        <Association Name="FK_Refuels_Drivers">
+          <End Role="Drivers" Type="Self.Drivers" Multiplicity="1" />
+          <End Role="Refuels" Type="Self.Refuels" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Drivers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Refuels">
+              <PropertyRef Name="DriverId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Refuels_FuelTypes">
+          <End Role="FuelTypes" Type="Self.FuelTypes" Multiplicity="1" />
+          <End Role="Refuels" Type="Self.Refuels" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FuelTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Refuels">
+              <PropertyRef Name="FuelTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Refuels_Vehicles">
+          <End Role="Vehicles" Type="Self.Vehicles" Multiplicity="1" />
+          <End Role="Refuels" Type="Self.Refuels" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Refuels">
+              <PropertyRef Name="VehicleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vehicles_FuelTypes">
+          <End Role="FuelTypes" Type="Self.FuelTypes" Multiplicity="1" />
+          <End Role="Vehicles" Type="Self.Vehicles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FuelTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Vehicles">
+              <PropertyRef Name="FuelTypesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vehicles_Manufacturers">
+          <End Role="Manufacturers" Type="Self.Manufacturers" Multiplicity="1" />
+          <End Role="Vehicles" Type="Self.Vehicles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Manufacturers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Vehicles">
+              <PropertyRef Name="ManufacturersId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TreinamentoNetModelStoreContainer">
+          <EntitySet Name="Drivers" EntityType="Self.Drivers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FuelTypes" EntityType="Self.FuelTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Manufacturers" EntityType="Self.Manufacturers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Refuels" EntityType="Self.Refuels" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vehicles" EntityType="Self.Vehicles" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Refuels_Drivers" Association="Self.FK_Refuels_Drivers">
+            <End Role="Drivers" EntitySet="Drivers" />
+            <End Role="Refuels" EntitySet="Refuels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Refuels_FuelTypes" Association="Self.FK_Refuels_FuelTypes">
+            <End Role="FuelTypes" EntitySet="FuelTypes" />
+            <End Role="Refuels" EntitySet="Refuels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Refuels_Vehicles" Association="Self.FK_Refuels_Vehicles">
+            <End Role="Vehicles" EntitySet="Vehicles" />
+            <End Role="Refuels" EntitySet="Refuels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vehicles_FuelTypes" Association="Self.FK_Vehicles_FuelTypes">
+            <End Role="FuelTypes" EntitySet="FuelTypes" />
+            <End Role="Vehicles" EntitySet="Vehicles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vehicles_Manufacturers" Association="Self.FK_Vehicles_Manufacturers">
+            <End Role="Manufacturers" EntitySet="Manufacturers" />
+            <End Role="Vehicles" EntitySet="Vehicles" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TreinamentoNetModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Driver">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Cpf" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CnhNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CnhCategoryId" Type="Int32" Nullable="false" />
+          <Property Name="BirthDate" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="ListRefuels" Relationship="Self.FK_Refuels_Drivers" FromRole="Drivers" ToRole="Refuels" />
+        </EntityType>
+        <EntityType Name="FuelType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="ListRefuels" Relationship="Self.FK_Refuels_FuelTypes" FromRole="FuelTypes" ToRole="Refuels" />
+          <NavigationProperty Name="ListVehicles" Relationship="Self.FK_Vehicles_FuelTypes" FromRole="FuelTypes" ToRole="Vehicles" />
+        </EntityType>
+        <EntityType Name="Manufacturer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="ListVehicles" Relationship="Self.FK_Vehicles_Manufacturers" FromRole="Manufacturers" ToRole="Vehicles" />
+        </EntityType>
+        <EntityType Name="Refuel">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VehicleId" Type="Int32" Nullable="false" />
+          <Property Name="FuelTypeId" Type="Int32" Nullable="false" />
+          <Property Name="DriverId" Type="Int32" Nullable="false" />
+          <Property Name="RefuelDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Qty" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="TotalPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="Driver" Relationship="Self.FK_Refuels_Drivers" FromRole="Refuels" ToRole="Drivers" />
+          <NavigationProperty Name="FuelType" Relationship="Self.FK_Refuels_FuelTypes" FromRole="Refuels" ToRole="FuelTypes" />
+          <NavigationProperty Name="Vehicle" Relationship="Self.FK_Refuels_Vehicles" FromRole="Refuels" ToRole="Vehicles" />
+        </EntityType>
+        <EntityType Name="Vehicle">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="LicensePlate" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FuelTypesId" Type="Int32" Nullable="false" />
+          <Property Name="ManufacturersId" Type="Int32" Nullable="false" />
+          <Property Name="ManufactureYear" Type="Int32" Nullable="false" />
+          <Property Name="TankCapacity" Type="Int32" Nullable="false" />
+          <Property Name="Remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="FuelType" Relationship="Self.FK_Vehicles_FuelTypes" FromRole="Vehicles" ToRole="FuelTypes" />
+          <NavigationProperty Name="Manufacturer" Relationship="Self.FK_Vehicles_Manufacturers" FromRole="Vehicles" ToRole="Manufacturers" />
+          <NavigationProperty Name="ListRefuels" Relationship="Self.FK_Refuels_Vehicles" FromRole="Vehicles" ToRole="Refuels" />
+        </EntityType>
+        <Association Name="FK_Refuels_Drivers">
+          <End Role="Drivers" Type="TreinamentoNetModel.Driver" Multiplicity="1" />
+          <End Role="Refuels" Type="TreinamentoNetModel.Refuel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Drivers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Refuels">
+              <PropertyRef Name="DriverId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Refuels_FuelTypes">
+          <End Role="FuelTypes" Type="TreinamentoNetModel.FuelType" Multiplicity="1" />
+          <End Role="Refuels" Type="TreinamentoNetModel.Refuel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FuelTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Refuels">
+              <PropertyRef Name="FuelTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vehicles_FuelTypes">
+          <End Role="FuelTypes" Type="TreinamentoNetModel.FuelType" Multiplicity="1" />
+          <End Role="Vehicles" Type="TreinamentoNetModel.Vehicle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FuelTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Vehicles">
+              <PropertyRef Name="FuelTypesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vehicles_Manufacturers">
+          <End Role="Manufacturers" Type="TreinamentoNetModel.Manufacturer" Multiplicity="1" />
+          <End Role="Vehicles" Type="TreinamentoNetModel.Vehicle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Manufacturers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Vehicles">
+              <PropertyRef Name="ManufacturersId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Refuels_Vehicles">
+          <End Role="Vehicles" Type="TreinamentoNetModel.Vehicle" Multiplicity="1" />
+          <End Role="Refuels" Type="TreinamentoNetModel.Refuel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Refuels">
+              <PropertyRef Name="VehicleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TreinamentoContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ListDrivers" EntityType="TreinamentoNetModel.Driver" />
+          <EntitySet Name="ListFuelTypes" EntityType="TreinamentoNetModel.FuelType" />
+          <EntitySet Name="ListManufacturers" EntityType="TreinamentoNetModel.Manufacturer" />
+          <EntitySet Name="ListRefuels" EntityType="TreinamentoNetModel.Refuel" />
+          <EntitySet Name="ListVehicles" EntityType="TreinamentoNetModel.Vehicle" />
+          <AssociationSet Name="FK_Refuels_Drivers" Association="Self.FK_Refuels_Drivers">
+            <End Role="Drivers" EntitySet="ListDrivers" />
+            <End Role="Refuels" EntitySet="ListRefuels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Refuels_FuelTypes" Association="Self.FK_Refuels_FuelTypes">
+            <End Role="FuelTypes" EntitySet="ListFuelTypes" />
+            <End Role="Refuels" EntitySet="ListRefuels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vehicles_FuelTypes" Association="Self.FK_Vehicles_FuelTypes">
+            <End Role="FuelTypes" EntitySet="ListFuelTypes" />
+            <End Role="Vehicles" EntitySet="ListVehicles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vehicles_Manufacturers" Association="Self.FK_Vehicles_Manufacturers">
+            <End Role="Manufacturers" EntitySet="ListManufacturers" />
+            <End Role="Vehicles" EntitySet="ListVehicles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Refuels_Vehicles" Association="Self.FK_Refuels_Vehicles">
+            <End Role="Vehicles" EntitySet="ListVehicles" />
+            <End Role="Refuels" EntitySet="ListRefuels" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TreinamentoNetModelStoreContainer" CdmEntityContainer="TreinamentoContext">
+          <EntitySetMapping Name="ListDrivers">
+            <EntityTypeMapping TypeName="TreinamentoNetModel.Driver">
+              <MappingFragment StoreEntitySet="Drivers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Cpf" ColumnName="Cpf" />
+                <ScalarProperty Name="CnhNumber" ColumnName="CnhNumber" />
+                <ScalarProperty Name="CnhCategoryId" ColumnName="CnhCategoryId" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ListFuelTypes">
+            <EntityTypeMapping TypeName="TreinamentoNetModel.FuelType">
+              <MappingFragment StoreEntitySet="FuelTypes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ListManufacturers">
+            <EntityTypeMapping TypeName="TreinamentoNetModel.Manufacturer">
+              <MappingFragment StoreEntitySet="Manufacturers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ListRefuels">
+            <EntityTypeMapping TypeName="TreinamentoNetModel.Refuel">
+              <MappingFragment StoreEntitySet="Refuels">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="VehicleId" ColumnName="VehicleId" />
+                <ScalarProperty Name="FuelTypeId" ColumnName="FuelTypeId" />
+                <ScalarProperty Name="DriverId" ColumnName="DriverId" />
+                <ScalarProperty Name="RefuelDate" ColumnName="RefuelDate" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ListVehicles">
+            <EntityTypeMapping TypeName="TreinamentoNetModel.Vehicle">
+              <MappingFragment StoreEntitySet="Vehicles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="LicensePlate" ColumnName="LicensePlate" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="FuelTypesId" ColumnName="FuelTypesId" />
+                <ScalarProperty Name="ManufacturersId" ColumnName="ManufacturersId" />
+                <ScalarProperty Name="ManufactureYear" ColumnName="ManufactureYear" />
+                <ScalarProperty Name="TankCapacity" ColumnName="TankCapacity" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
