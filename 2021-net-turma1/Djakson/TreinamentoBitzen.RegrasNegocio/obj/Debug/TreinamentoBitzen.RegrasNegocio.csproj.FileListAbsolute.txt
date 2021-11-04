@@ -1,0 +1,13 @@
+C:\Users\Bitzen-Dev\Documents\Djakson\treinamento-net\2021-net-turma1\Djakson\TreinamentoBitzen.RegrasNegocio\bin\Debug\TreinamentoBitzen.RegrasNegocio.dll
+C:\Users\Bitzen-Dev\Documents\Djakson\treinamento-net\2021-net-turma1\Djakson\TreinamentoBitzen.RegrasNegocio\bin\Debug\TreinamentoBitzen.RegrasNegocio.pdb
+C:\Users\Bitzen-Dev\Documents\Djakson\treinamento-net\2021-net-turma1\Djakson\TreinamentoBitzen.RegrasNegocio\bin\Debug\EntityFramework.dll
+C:\Users\Bitzen-Dev\Documents\Djakson\treinamento-net\2021-net-turma1\Djakson\TreinamentoBitzen.RegrasNegocio\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Bitzen-Dev\Documents\Djakson\treinamento-net\2021-net-turma1\Djakson\TreinamentoBitzen.RegrasNegocio\bin\Debug\TreinamentoBitzen.Dados.dll
+C:\Users\Bitzen-Dev\Documents\Djakson\treinamento-net\2021-net-turma1\Djakson\TreinamentoBitzen.RegrasNegocio\bin\Debug\TreinamentoBitzen.Dados.pdb
+C:\Users\Bitzen-Dev\Documents\Djakson\treinamento-net\2021-net-turma1\Djakson\TreinamentoBitzen.RegrasNegocio\bin\Debug\TreinamentoBitzen.Dados.dll.config
+C:\Users\Bitzen-Dev\Documents\Djakson\treinamento-net\2021-net-turma1\Djakson\TreinamentoBitzen.RegrasNegocio\bin\Debug\EntityFramework.xml
+C:\Users\Bitzen-Dev\Documents\Djakson\treinamento-net\2021-net-turma1\Djakson\TreinamentoBitzen.RegrasNegocio\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Bitzen-Dev\Documents\Djakson\treinamento-net\2021-net-turma1\Djakson\TreinamentoBitzen.RegrasNegocio\obj\Debug\TreinamentoBitzen.RegrasNegocio.csproj.AssemblyReference.cache
+C:\Users\Bitzen-Dev\Documents\Djakson\treinamento-net\2021-net-turma1\Djakson\TreinamentoBitzen.RegrasNegocio\obj\Debug\TreinamentoBitzen.RegrasNegocio.csproj.CoreCompileInputs.cache
+C:\Users\Bitzen-Dev\Documents\Djakson\treinamento-net\2021-net-turma1\Djakson\TreinamentoBitzen.RegrasNegocio\obj\Debug\TreinamentoBitzen.RegrasNegocio.dll
+C:\Users\Bitzen-Dev\Documents\Djakson\treinamento-net\2021-net-turma1\Djakson\TreinamentoBitzen.RegrasNegocio\obj\Debug\TreinamentoBitzen.RegrasNegocio.pdb

@@ -8,3 +8,5 @@
 2021-net-turma1/Pedro/TreinamentoBitzen.RegrasNegocio/obj
 
 *.csproj.user
+.vs
+.vs/*

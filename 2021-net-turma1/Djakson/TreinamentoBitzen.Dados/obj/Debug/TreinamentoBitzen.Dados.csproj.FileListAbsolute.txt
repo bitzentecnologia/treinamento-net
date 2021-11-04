@@ -1,0 +1,11 @@
+C:\Users\Bitzen-Dev\Documents\Djakson\treinamento-net\2021-net-turma1\Djakson\TreinamentoBitzen.Dados\bin\Debug\TreinamentoBitzen.Dados.dll.config
+C:\Users\Bitzen-Dev\Documents\Djakson\treinamento-net\2021-net-turma1\Djakson\TreinamentoBitzen.Dados\bin\Debug\TreinamentoBitzen.Dados.dll
+C:\Users\Bitzen-Dev\Documents\Djakson\treinamento-net\2021-net-turma1\Djakson\TreinamentoBitzen.Dados\bin\Debug\TreinamentoBitzen.Dados.pdb
+C:\Users\Bitzen-Dev\Documents\Djakson\treinamento-net\2021-net-turma1\Djakson\TreinamentoBitzen.Dados\bin\Debug\EntityFramework.dll
+C:\Users\Bitzen-Dev\Documents\Djakson\treinamento-net\2021-net-turma1\Djakson\TreinamentoBitzen.Dados\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Bitzen-Dev\Documents\Djakson\treinamento-net\2021-net-turma1\Djakson\TreinamentoBitzen.Dados\bin\Debug\EntityFramework.xml
+C:\Users\Bitzen-Dev\Documents\Djakson\treinamento-net\2021-net-turma1\Djakson\TreinamentoBitzen.Dados\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Bitzen-Dev\Documents\Djakson\treinamento-net\2021-net-turma1\Djakson\TreinamentoBitzen.Dados\obj\Debug\TreinamentoBitzen.Dados.csproj.CoreCompileInputs.cache
+C:\Users\Bitzen-Dev\Documents\Djakson\treinamento-net\2021-net-turma1\Djakson\TreinamentoBitzen.Dados\obj\Debug\TreinamentoBitzen.Dados.dll
+C:\Users\Bitzen-Dev\Documents\Djakson\treinamento-net\2021-net-turma1\Djakson\TreinamentoBitzen.Dados\obj\Debug\TreinamentoBitzen.Dados.pdb
+C:\Users\Bitzen-Dev\Documents\Djakson\treinamento-net\2021-net-turma1\Djakson\TreinamentoBitzen.Dados\obj\Debug\TreinamentoBitzen.Dados.csproj.AssemblyReference.cache
