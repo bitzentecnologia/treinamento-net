@@ -1,11 +1,11 @@
-2021-net-turma1/Djakson/.vs
-2021-net-turma1/Djakson/packages
-2021-net-turma1/Djakson/TreinamentoBitzen/bin
-2021-net-turma1/Djakson/TreinamentoBitzen/obj
-2021-net-turma1/Djakson/TreinamentoBitzen.Dados/bin
-2021-net-turma1/Djakson/TreinamentoBitzen.Dados/obj
-2021-net-turma1/Djakson/TreinamentoBitzen.RegrasNegocio/bin
-2021-net-turma1/Djakson/TreinamentoBitzen.RegrasNegocio/obj
+2021-net-turma1/*/.vs
+2021-net-turma1/*/packages
+2021-net-turma1/*/TreinamentoBitzen/bin
+2021-net-turma1/*/TreinamentoBitzen/obj
+2021-net-turma1/*/TreinamentoBitzen.Dados/bin
+2021-net-turma1/*/TreinamentoBitzen.Dados/obj
+2021-net-turma1/*/TreinamentoBitzen.RegrasNegocio/bin
+2021-net-turma1/*/TreinamentoBitzen.RegrasNegocio/obj
 
 *.csproj.user
 .vs
