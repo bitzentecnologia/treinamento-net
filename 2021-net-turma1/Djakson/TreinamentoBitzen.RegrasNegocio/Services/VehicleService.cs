@@ -4,27 +4,27 @@ using TreinamentoBitzen.Dados.Entidades;
 
 namespace TreinamentoBitzen.RegrasNegocio.Services
 {
-    public class ManufacturerService
+    public class VehicleService
     {
-        public List<Manufacturer> List()
+        public List<Vehicle> List()
         {
             using (var context = new TreinamentoContext())
             {
-                var listManufacturers = context.ListManufacturers;
+                var listVehicles = context.ListVehicles;
 
-                return listManufacturers.ToList();
+                return listVehicles.ToList();
             }
         }
-        public Manufacturer GetById(int id)
+        public Vehicle GetById(int id)
         {
             using (var context = new TreinamentoContext())
             {
-                var manufacturer = context.ListManufacturers.FirstOrDefault(x => x.Id == id);
+                var vehicle = context.ListVehicles.FirstOrDefault(x => x.Id == id);
 
-                return manufacturer;
+                return vehicle;
             }
         }
-        public bool Save(Manufacturer obj)
+        public bool Save(Vehicle obj)
         {
             using (var context = new TreinamentoContext())
             {
@@ -34,7 +34,7 @@ namespace TreinamentoBitzen.RegrasNegocio.Services
                 return rowsAffected > 0;
             }
         }
-        public bool Update(Manufacturer obj)
+        public bool Update(Vehicle obj)
         {
             using (var context = new TreinamentoContext())
             {

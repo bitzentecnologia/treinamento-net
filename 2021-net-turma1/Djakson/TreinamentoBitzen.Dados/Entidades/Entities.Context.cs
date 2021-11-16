@@ -9,7 +9,6 @@
 
 namespace TreinamentoBitzen.Dados.Entidades
 {
-    using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
 
@@ -33,5 +32,6 @@ namespace TreinamentoBitzen.Dados.Entidades
 
         public System.Data.Entity.DbSet<Manufacturer> Manufacturer { get; set; }
 
+        public System.Data.Entity.DbSet<Vehicle> Vehicle { get; set; }
     }
 }
