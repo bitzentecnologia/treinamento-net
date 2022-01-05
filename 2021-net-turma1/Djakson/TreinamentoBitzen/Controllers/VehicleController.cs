@@ -80,11 +80,11 @@ namespace TreinamentoBitzen.Controllers
             {
                 var newModel = new Vehicle
                 {
+                    Id = viewModel.Id,
                     Name = viewModel.Name,
                     Active = viewModel.Active,
                     FuelType = viewModel.FuelType,
                     FuelTypesId = viewModel.FuelTypesId,
-                    Id = viewModel.Id,
                     LicensePlate = viewModel.LicensePlate,
                     Manufacturer = viewModel.Manufacturer,
                     ManufacturersId = viewModel.ManufacturersId,

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TreinamentoBitzen.Dados.Entidades;
 using TreinamentoBitzen.RegrasNegocio.Services;
 using TreinamentoBitzen.ViewModels;
 
@@ -40,6 +41,53 @@ namespace TreinamentoBitzen.Controllers
             }).ToList();
 
             return View(listModel);
+        }
+
+        // GET - DETAILS
+        [HttpGet]
+        public ActionResult Details(int id)
+        {
+            var detail = _driverService.GetById(id);
+            var viewModel = new DriverViewModel
+            {
+                Id = id,
+                Active = detail.Active,
+                BirthDate = detail.BirthDate,
+                CnhCategoryId = detail.CnhCategoryId,
+                CnhNumber = detail.CnhNumber,
+                Cpf = detail.Cpf,
+                Name = detail.Name
+            };
+            return View(viewModel);
+        }
+
+        // GET - CREATE
+        [HttpGet]
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        // POST - CREATE
+        [HttpPost]
+        public ActionResult Create(DriverViewModel viewModel)
+        {
+            if (viewModel != null && viewModel.Name != null)
+            {
+                var newModel = new Driver
+                {
+                    Id = viewModel.Id,
+                    Name = viewModel.Name,
+                    Active = viewModel.Active,
+                    CnhCategoryId = viewModel.CnhCategoryId,
+                    BirthDate = viewModel.BirthDate,
+                    CnhNumber = viewModel.CnhNumber,
+                    Cpf = viewModel.Cpf
+                };
+                _driverService.Save(newModel);
+                return RedirectToAction("Index");
+            }
+            return View();
         }
 
         #endregion
