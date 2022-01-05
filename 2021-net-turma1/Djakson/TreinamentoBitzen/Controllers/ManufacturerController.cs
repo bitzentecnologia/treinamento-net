@@ -123,7 +123,7 @@ namespace TreinamentoBitzen.Controllers
             return View(viewModel);
         }
 
-        // DELETE - DELETE
+        // POST - DELETE
         [HttpPost]
         public ActionResult Delete(ManufacturerViewModel viewModel)
         {

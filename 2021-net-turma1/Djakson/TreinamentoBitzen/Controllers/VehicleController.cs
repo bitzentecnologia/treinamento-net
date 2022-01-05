@@ -109,7 +109,6 @@ namespace TreinamentoBitzen.Controllers
                 Active = edit.Active,
                 FuelTypesId = edit.FuelTypesId,
                 LicensePlate = edit.LicensePlate,
-                //ListRefuels = edit.ListRefuels,
                 ManufacturersId = edit.ManufacturersId,
                 ManufactureYear = edit.ManufactureYear,
                 Name = edit.Name,
@@ -120,7 +119,7 @@ namespace TreinamentoBitzen.Controllers
             return View(viewModel);
         }
 
-        //POST - EDIT
+        // POST - EDIT
         [HttpPost]
         public ActionResult Edit(VehicleViewModel viewModel)
         {
@@ -140,6 +139,39 @@ namespace TreinamentoBitzen.Controllers
                 };
 
                 _vehicleService.Update(obj);
+                return RedirectToAction("Index");
+            }
+            return View();
+        }
+
+        // GET - DELETE
+        [HttpGet]
+        public ActionResult Delete(int id)
+        {
+            var detail = _vehicleService.GetById(id);
+            var viewModel = new VehicleViewModel
+            {
+                Active = detail.Active,
+                Id = id,
+                FuelTypesId = detail.FuelTypesId,
+                LicensePlate = detail.LicensePlate,
+                ManufacturersId = detail.ManufacturersId,
+                ManufactureYear = detail.ManufactureYear,
+                Name = detail.Name,
+                Remarks = detail.Remarks,
+                TankCapacity = detail.TankCapacity
+            };
+
+            return View(viewModel);
+        }
+
+        // POST - DELETE
+        [HttpPost]
+        public ActionResult Delete(VehicleViewModel viewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                _vehicleService.DeleteById(viewModel.Id);
                 return RedirectToAction("Index");
             }
             return View();
