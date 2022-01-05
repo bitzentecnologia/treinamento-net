@@ -54,10 +54,8 @@ namespace TreinamentoBitzen.Controllers
                 Id = id,
                 Name = detail.Name,
                 Active = detail.Active,
-                //FuelType = detail.FuelType,
                 FuelTypesId = detail.FuelTypesId,
                 LicensePlate = detail.LicensePlate,
-                //Manufacturer = detail.Manufacturer,
                 ManufacturersId = detail.ManufacturersId,
                 ManufactureYear = detail.ManufactureYear,
                 Remarks = detail.Remarks,
@@ -99,6 +97,54 @@ namespace TreinamentoBitzen.Controllers
             }
             return View();
         }
+
+        // GET - EDIT
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            var edit = _vehicleService.GetById(id);
+            var viewModel = new VehicleViewModel
+            {
+                Id = id,
+                Active = edit.Active,
+                FuelTypesId = edit.FuelTypesId,
+                LicensePlate = edit.LicensePlate,
+                //ListRefuels = edit.ListRefuels,
+                ManufacturersId = edit.ManufacturersId,
+                ManufactureYear = edit.ManufactureYear,
+                Name = edit.Name,
+                Remarks = edit.Remarks,
+                TankCapacity = edit.TankCapacity
+            };
+
+            return View(viewModel);
+        }
+
+        //POST - EDIT
+        [HttpPost]
+        public ActionResult Edit(VehicleViewModel viewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                var obj = new Vehicle()
+                {
+                    Id = viewModel.Id,
+                    Active = viewModel.Active,
+                    FuelTypesId = viewModel.FuelTypesId,
+                    LicensePlate = viewModel.LicensePlate,
+                    ManufacturersId = viewModel.ManufacturersId,
+                    ManufactureYear = viewModel.ManufactureYear,
+                    Name = viewModel.Name,
+                    Remarks = viewModel.Remarks,
+                    TankCapacity = viewModel.TankCapacity
+                };
+
+                _vehicleService.Update(obj);
+                return RedirectToAction("Index");
+            }
+            return View();
+        }
+
         #endregion
 
         #endregion
