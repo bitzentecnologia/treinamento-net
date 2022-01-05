@@ -90,6 +90,48 @@ namespace TreinamentoBitzen.Controllers
             return View();
         }
 
+        // GET - EDIT
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            var edit = _driverService.GetById(id);
+            var viewModel = new DriverViewModel
+            {
+                Id = id,
+                Name = edit.Name,
+                Active = edit.Active,
+                CnhCategoryId = edit.CnhCategoryId,
+                BirthDate = edit.BirthDate,
+                CnhNumber = edit.CnhNumber,
+                Cpf = edit.Cpf
+            };
+
+            return View(viewModel);
+        }
+
+        // POST - EDIT
+        [HttpPost]
+        public ActionResult Edit(DriverViewModel viewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                var obj = new Driver()
+                {
+                    Id = viewModel.Id,
+                    Name=viewModel.Name,
+                    Active = viewModel.Active,
+                    BirthDate = viewModel.BirthDate,
+                    CnhCategoryId = viewModel.CnhCategoryId,
+                    CnhNumber = viewModel.CnhNumber,
+                    Cpf = viewModel.Cpf
+                };
+
+                _driverService.Update(obj);
+                return RedirectToAction("Index");
+            }
+            return View();
+        }
+
         #endregion
     }
 }
