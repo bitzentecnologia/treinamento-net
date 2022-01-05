@@ -31,7 +31,7 @@ namespace TreinamentoBitzen.Dados.Entidades
         public virtual DbSet<Vehicle> ListVehicles { get; set; }
 
         public System.Data.Entity.DbSet<Manufacturer> Manufacturer { get; set; }
-
         public System.Data.Entity.DbSet<Vehicle> Vehicle { get; set; }
+        public System.Data.Entity.DbSet<Driver> Driver { get; set; }
     }
 }
