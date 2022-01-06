@@ -132,6 +132,37 @@ namespace TreinamentoBitzen.Controllers
             return View();
         }
 
+        // GET - DELETE
+        [HttpGet]
+        public ActionResult Delete(int id)
+        {
+            var detail = _driverService.GetById(id);
+            var viewModel = new DriverViewModel
+            {
+                Id = id,
+                Active = detail.Active,
+                Name = detail.Name,
+                BirthDate = detail.BirthDate,
+                CnhCategoryId = detail.CnhCategoryId,
+                CnhNumber = detail.CnhNumber,
+                Cpf = detail.Cpf
+            };
+
+            return View(viewModel);
+        }
+
+        // POST - DELETE
+        [HttpPost]
+        public ActionResult Delete(DriverViewModel viewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                _driverService.DeleteById(viewModel.Id);
+                return RedirectToAction("Index");
+            }
+            return View();
+        }
+
         #endregion
     }
 }
