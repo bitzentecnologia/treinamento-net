@@ -33,5 +33,6 @@ namespace TreinamentoBitzen.Dados.Entidades
         public System.Data.Entity.DbSet<Manufacturer> Manufacturer { get; set; }
         public System.Data.Entity.DbSet<Vehicle> Vehicle { get; set; }
         public System.Data.Entity.DbSet<Driver> Driver { get; set; }
+        public System.Data.Entity.DbSet<FuelType> FuelType { get; set; }
     }
 }
